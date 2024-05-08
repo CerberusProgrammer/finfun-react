@@ -1,6 +1,3 @@
-export type MoneyAction =
-  | { type: "increment" }
-  | { type: "decrement" }
-  | { type: "reset" }
-  | { type: "add-money"; payload: number }
-  | { type: "reduce-money"; payload: number };
+import { Expense } from "../models/Expense";
+
+export type MoneyAction = { type: "add-expense"; payload: Expense };

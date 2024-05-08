@@ -1,19 +1,18 @@
 import { Expense } from "../models/Expense";
 
 export interface MoneyState {
-  total: number;
-  expense: Expense[];
+  expenses: Expense[];
 }
 
 export function loadMoneyState(): MoneyState {
   try {
     const serializedState = localStorage.getItem("money-state");
     if (serializedState === null) {
-      return { total: 0, expense: [] };
+      return { expenses: [] };
     }
     return JSON.parse(serializedState);
   } catch (err) {
-    return { total: 0, expense: [] };
+    return { expenses: [] };
   }
 }
 

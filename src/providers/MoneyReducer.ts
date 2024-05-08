@@ -6,16 +6,11 @@ export default function moneyReducer(
   action: MoneyAction
 ): MoneyState {
   switch (action.type) {
-    case "increment":
-      return { ...state, total: state.total + 1 };
-    case "decrement":
-      return { ...state, total: state.total - 1 };
-    case "add-money":
-      return { ...state, total: state.total + action.payload };
-    case "reduce-money":
-      return { ...state, total: state.total - action.payload };
-    case "reset":
-      return { ...state, total: 0 };
+    case "add-expense":
+      return {
+        ...state,
+        expenses: [...state.expenses, action.payload],
+      };
     default:
       throw new Error();
   }

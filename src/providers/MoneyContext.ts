@@ -9,7 +9,7 @@ interface MoneyContextProps {
 }
 
 const MoneyContext = createContext<MoneyContextProps>({
-  state: { total: 0, expense: [] },
+  state: { expenses: [] },
   dispatch: () => undefined,
 });
 

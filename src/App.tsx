@@ -3,10 +3,21 @@ import BentoLayout from "./layouts/BentoLayout";
 import { loadMoneyState, saveMoneyState } from "./providers/MoneyState";
 import moneyReducer from "./providers/MoneyReducer";
 import ExpensesPage from "./pages/ExpensesPage";
-import ButtonPage from "./pages/ButtonPage";
+import AddExpense from "./pages/AddExpense";
+import LastExpense from "./pages/LastExpense";
 
 export default function App() {
-  const [state, dispatch] = useReducer(moneyReducer, loadMoneyState());
+  const initialState = { expenses: [] };
+
+  const [state, dispatch] = useReducer(
+    moneyReducer,
+    loadMoneyState() || initialState
+  );
+
+  const money: number = state.expenses.reduce(
+    (n, expense) => n + expense.cost,
+    0
+  );
 
   useEffect(() => {
     saveMoneyState(state);
@@ -15,15 +26,12 @@ export default function App() {
     <div className="bg-slate-100">
       <BentoLayout>
         <p>asd</p>
-        <ExpensesPage money={state.total} />
+        <ExpensesPage money={money} />
+        <LastExpense expense={state.expenses[state.expenses.length - 1]} />
         <p>asd</p>
         <p>asd</p>
         <p>asd</p>
-        <p>asd</p>
-        <ButtonPage
-          title="Add"
-          onClick={() => dispatch({ type: "add-money", payload: 1 })}
-        />
+        <AddExpense dispatch={dispatch} />
       </BentoLayout>
     </div>
   );
