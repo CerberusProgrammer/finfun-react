@@ -26,7 +26,7 @@ export default function App() {
     <div className="bg-slate-100">
       <BentoLayout>
         <p>asd</p>
-        <ExpensesPage money={money} />
+        <ExpensesPage money={money} expenses={state.expenses} />
         <LastExpense expense={state.expenses[state.expenses.length - 1]} />
         <p>asd</p>
         <p>asd</p>
