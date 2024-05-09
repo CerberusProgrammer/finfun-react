@@ -1,18 +1,20 @@
+import { Card } from "../models/Card";
 import { Expense } from "../models/Expense";
 
 export interface MoneyState {
   expenses: Expense[];
+  cards: Card[];
 }
 
 export function loadMoneyState(): MoneyState {
   try {
     const serializedState = localStorage.getItem("money-state");
     if (serializedState === null) {
-      return { expenses: [] };
+      return { expenses: [], cards: [] };
     }
     return JSON.parse(serializedState);
   } catch (err) {
-    return { expenses: [] };
+    return { expenses: [], cards: [] };
   }
 }
 

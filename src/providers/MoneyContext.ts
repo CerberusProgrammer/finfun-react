@@ -1,4 +1,3 @@
-// context.ts
 import { createContext, Dispatch } from "react";
 import { MoneyState } from "./MoneyState";
 import { MoneyAction } from "./MoneyActions";
@@ -9,7 +8,7 @@ interface MoneyContextProps {
 }
 
 const MoneyContext = createContext<MoneyContextProps>({
-  state: { expenses: [] },
+  state: { expenses: [], cards: [] },
   dispatch: () => undefined,
 });
 

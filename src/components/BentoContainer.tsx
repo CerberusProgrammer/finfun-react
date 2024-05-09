@@ -1,5 +1,5 @@
 type Props = {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | null;
 };
 
 export default function BentoContainer({ children }: Props) {
